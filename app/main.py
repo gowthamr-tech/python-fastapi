@@ -42,7 +42,14 @@ def update_item(item_id: int, item: schemas.ItemUpdate, db: Session = Depends(ge
 
 @app.delete("/items/{item_id}", status_code=status.HTTP_204_NO_CONTENT)
 def delete_item(item_id: int, db: Session = Depends(get_db)):
+    print(f"Attempting to delete item with ID: {item_id}")
     deleted = crud.delete_item(db=db, item_id=item_id)
     if not deleted:
         raise HTTPException(status_code=404, detail="Item not found")
     return Response(status_code=status.HTTP_204_NO_CONTENT)
+
+# @app.post("/items/add", response_model=schemas.ItemResponse)
+# def add_item(item:Json):
+
+
+

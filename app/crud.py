@@ -14,7 +14,8 @@ def create_item(db: Session, item: schemas.ItemCreate) -> models.Item:
 
 
 def get_items(db: Session, skip: int = 0, limit: int = 100) -> List[models.Item]:
-    return db.query(models.Item).offset(skip).limit(limit).all()
+    # return db.query(models.Item).offset(skip).limit(limit).all()
+    return db.query(models.Item).all()
 
 
 def get_item(db: Session, item_id: int) -> Optional[models.Item]:
