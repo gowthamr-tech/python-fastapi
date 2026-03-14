@@ -51,5 +51,10 @@ def delete_item(item_id: int, db: Session = Depends(get_db)):
 # @app.post("/items/add", response_model=schemas.ItemResponse)
 # def add_item(item:Json):
 
+@app.get("/users/{id}")
+async def read_users(id:int):
+    return [{"username": "user1"}, {"username": "user2"}]
+
+
 
 
